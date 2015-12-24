@@ -2,42 +2,46 @@
 
 (function () {
     angular.module('salesManagerApp', ['ngRoute', 'ngSanitize', 'salesManagerControllers', 'salesManagerDirectives']).
-        config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
-            $httpProvider.interceptors.push(function () {
-                return {
-                    request: function (config) {
-                        if (sessionStorage.authenticatedUser === null) {
-                            return window.location = 'index.html';
-                        }
+        config(['$routeProvider', function ($routeProvider) {
 
-                        return config;
-                    }
+            // redirect user back to login page if not authenticated
+            var authenticate = ['$window', function ($window) {
+                if (!$window.sessionStorage.authenticatedUser && !$window.sessionStorage.sessionId) {
+                    $window.location = 'index.html';
                 }
-            });
+            }];
 
             $routeProvider.
                 when('/dashboard', {
                     templateUrl: 'partials/dashboard.html',
-                    controller: 'DashboardController'
+                    controller: 'DashboardController',
+                    resolve: { authenticate: authenticate }
             }).
                 when('/sales-total-per-sales-man', {
                 templateUrl: 'partials/sales-total-per-sales-man.html',
-                controller: 'SalesTotalPerSalesManController'
+                controller: 'SalesTotalPerSalesManController',
+                resolve: { authenticate: authenticate }
             }).
                 when('/sales-total-per-month', {
                 templateUrl: 'partials/sales-total-per-month.html',
-                controller: 'SalesTotalPerMonthController'
+                controller: 'SalesTotalPerMonthController',
+                resolve: { authenticate: authenticate }
             }).
                 when('/top-5-sales-orders', {
                 templateUrl: 'partials/top-5-sales-orders.html',
-                controller: 'Top5SalesOrdersController'
+                controller: 'Top5SalesOrdersController',
+                resolve: { authenticate: authenticate }
             }).
                 when('/top-5-sales-men', {
                 templateUrl: 'partials/top-5-sales-men.html',
-                controller: 'Top5SalesMenController'
+                controller: 'Top5SalesMenController',
+                resolve: { authenticate: authenticate }
             }).
                 otherwise({
                     redirectTo: '/dashboard'
             });
+        }]).
+        run(['$rootScope', function ($rootScope) {
+            $rootScope.authenticatedUser = sessionStorage.authenticatedUser;
         }]);
 })();

@@ -1,14 +1,6 @@
 'use strict';
 
 (function () {
-    // get authenticated user
-    var sessionUser = function () {
-        if (!sessionStorage.sessionId) {
-            return window.location = 'index.html';
-        } else {
-            return sessionStorage.authenticatedUser;
-        }
-    };
 
     var host = 'http://localhost:8080'; // remote REST host
 
@@ -59,7 +51,6 @@
             placeholder: 'ui-state-highlight'
         });
         $('#sortable').disableSelection();
-        $rootScope.authenticatedUser = sessionUser();
 
         // Get top sales orders
         totalSalesOrders($http, $scope);
@@ -96,17 +87,16 @@
 
     /*Controller for Sales Per Man*/
     controller('SalesTotalPerSalesManController', ['$scope', '$rootScope', function ($scope, $rootScope) {
-        $rootScope.authenticatedUser = sessionUser();
+
     }]).
 
     /*Controller for Sales Per Month*/
     controller('SalesTotalPerMonthController', ['$scope', '$rootScope', function ($scope, $rootScope) {
-        $rootScope.authenticatedUser = sessionUser();
+
     }]).
 
     /*Controller for Top 5 Orders*/
     controller('Top5SalesOrdersController', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
-        $rootScope.authenticatedUser = sessionUser();
 
         totalSalesOrders($http, $scope);
 
@@ -119,7 +109,6 @@
 
     /*Controller for Top 5 Sales men*/
     controller('Top5SalesMenController', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
-        $rootScope.authenticatedUser = sessionUser();
 
         topSalesMen($http, $scope);
 
