@@ -1,0 +1,30 @@
+<h1>Total 5 Sales Men</h1> <hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"></h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool"  ng-click="refreshTable('topSalesMen')"><i class="fa fa-refresh"></i> </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Sales Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in salesMen">
+                        <td>{{ data[0] }}</td>
+                        <td>{{ data[1] }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
