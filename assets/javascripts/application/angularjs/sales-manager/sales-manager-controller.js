@@ -36,6 +36,7 @@
         // Logout authenticated user
         $scope.logout = function () {
             // ! Returns with a JSON.parse error for some reason
+            // ! Probably issue from backend because other requests (minus logout) works
             /*$http.get(host + '/logout', { params: { sessionid: sessionStorage.sessionId } }).success(function (data) {
                 if (data === 'SUCCESS') {
                      sessionStorage.removeItem('authenticatedUser');

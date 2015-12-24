@@ -3,9 +3,6 @@
 angular.module('AuthenticationControllers', ['AuthenticationServices']).
     controller('LoginController', ['$scope', '$rootScope', '$sce', '$window', 'Authenticate', function ($scope, $rootScope, $sce, $window,
                                                                                                         Authenticate) {
-
-    /*sessionStorage.removeItem('authenticatedUser');
-    sessionStorage.removeItem('sessionId');*/
     $scope.login = function () {
         Authenticate.login($scope.user, function (data) {
             if (data.loginSucceeded === true) {
