@@ -1,10 +1,10 @@
 <h1>RUNNING THE APPLICATION</h1>
 
-Requirement
+<strong>Requirement</strong>
 - LAMP, XAMPP or WAMP server
 - Java 1.7
 
-Instructions
+<strong>Instructions</strong>
 - Copy code folder into htdocs/, www/ or www/html/ folder depending on the server in use.
 - Start up the server web server
 - Start up the backend server. cd into backend/ and run java -jar backend.jar
