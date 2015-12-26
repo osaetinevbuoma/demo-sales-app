@@ -6,6 +6,6 @@
 
 <strong>Instructions</strong>
 - Copy code folder into htdocs/, www/ or www/html/ folder depending on the server in use.
-- Start up the server web server
+- Start up the web server
 - Start up the backend server. cd into backend/ and run java -jar backend.jar
-- Direct browser to "htt://127.0.0.1/<code_folder_name>"
+- Direct browser to "http://127.0.0.1/<code_folder_name>"
